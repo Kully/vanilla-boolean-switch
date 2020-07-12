@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>boolean switch in js</title>
+    <meta http-equiv="Content-Type" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="a vanilla javascript boolean switch written in a few lines of code">
+    <style type="text/css">
+        :root {
+            --myWhite: #FAFAFA;
+            --myGrey: #E5E5E5;
+            --myBlue: #BBE1FA;
+            --colorTransitionSeconds: 0.31s;
+            --switchTransitionSeconds: 0.31s;
+        }
+
+        body {
+            background-color: #f0ece3;
+            font-family: Arial;
+            transition: var(--colorTransitionSeconds);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0;
+            font-weight: 100;
+        }
+
+        p {
+            color: #222;
+        }
+
+        #boolean-switch {
+            width: 400px;
+            height: 200px;
+            position: relative;
+        }
+
+        #container {
+            width: 100%;
+            height: 100%;
+            border-radius: 100px;
+            background-color: var(--myGrey);
+            transition: var(--switchTransitionSeconds);
+        }
+
+        #dot {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 100px;
+            background-color: var(--myWhite);
+        }
+
+        @keyframes toggleLeft {
+            from {left: 50%;}
+            to {left: 0%;}
+        }
+
+        @keyframes toggleRight {
+            from {left: 0%;}
+            to {left: 50%;}
+        }
+    </style>
+</head>
+<body>
+    <h1>Boolean Switch</h1>
+    <p>written in 104 lines of <i>HTML, CSS, JS</i></p>
+    <div id="boolean-switch">
+        <div id="container">
+            <div id="dot"></div>
+        </div>
+    </div>
+    <p>See the code on <a href="">Github</a> </p>
+</body>
+
+<script type="text/javascript">
+    const myBlue = "#BBE1FA";
+    const myGrey = "#E5E5E5";
+
+    let isLeft = 1;
+    let dot = document.getElementById("dot");
+    let container = document.getElementById("container");
+
+    container.addEventListener("click", toggleSwitch)
+    function toggleSwitch(e)
+    {
+        if (isLeft)
+        {
+            container.style.backgroundColor = myBlue;
+            dot.style.animation = "toggleRight var(--colorTransitionSeconds) forwards ease-in-out";
+            isLeft = false;
+        }
+        else
+        if (!isLeft)
+        {
+            container.style.backgroundColor = myGrey;
+            dot.style.animation = "toggleLeft var(--colorTransitionSeconds) forwards ease-in-out"
+            isLeft = true;
+        }
+    }
+</script>
+</html>
